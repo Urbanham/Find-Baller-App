@@ -1,0 +1,14 @@
+{
+  "name": "playermodule",
+  "version": "1.0.0",
+  "description": "This is the custom module used to search and fetch ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abraham Estrada",
+  "license": "ISC",
+  "dependencies": {
+    "superagent": "^5.2.2"
+  }
+}

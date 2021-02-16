@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BALL IS LIFE</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div id="players">
+        <div class="jumbotron jumbotron-fluid" style="background-image: url(/images/jordanDunk.jpg);height: 50%;">
+            <div class="container">
+                <h1 class="display-4"><a class="text-white bg-dark " href="index.html">{{appName}}</a></h1>
+                <p class="lead"><a class="text-white bg-dark " href="index.html">Where you go to see the Ballers</a></p>
+            </div>
+        </div>
+
+        <div class='container'>
+            <div class='row'>
+                <div class='col-lg'>
+                    <span class="float-right">
+                        search results: {{ numberOfPlayers }}
+                    </span>
+
+                    <input id="searchBar" type='text' class='form-control' placeholder="Enter Player Name"
+                        @keyup.enter='search' />
+
+                    <br></br>
+                    <button @click="search" class="btn btn-dark"> Search </button>
+                    <button @click='fetch' class="btn btn-dark float-right">Description</button>
+
+
+                    <div class="d-flex justify-content-center">
+                        <section v-if="!firstSearch" id="players">
+                            <div v-for="player in playerNames" v-show="playerNames.length" class="list-group">
+                                <div class="list-group-item">
+                                    <label>{{player.id}}: {{player.first_name}} {{player.last_name}} of the
+                                        {{player.team.full_name}}</label>
+                                    <input type="radio" v-model="selectedPlayerID" :value="player.id"></input>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div v-else class="card" style="width: 18rem;">
+                            <img class="card-img-top align-center" v-bind:src="spinBall" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"> {{selectedPlayerObj.first_name}} {{selectedPlayerObj.last_name}}
+                                </h5>
+                                <div class="col-lg">
+                                    <label>This is the players Position : {{selectedPlayerObj.position}} </label>
+                                    <label>This is the players Team: {{selectedPlayerObj.team.full_name}} </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="app.js" type="text/javascript"></script>
+
+</body>
+
+</html>
